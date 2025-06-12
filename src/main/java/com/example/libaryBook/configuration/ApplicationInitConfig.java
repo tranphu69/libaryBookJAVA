@@ -1,6 +1,8 @@
 package com.example.libaryBook.configuration;
 
 import com.example.libaryBook.entity.User;
+import com.example.libaryBook.repository.UserRepository;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.ApplicationRunner;
@@ -30,5 +32,10 @@ public class ApplicationInitConfig {
                 userRepository.save(user);
             }
         };
+    }
+
+    @Bean
+    public ModelMapper modelMapper() {
+        return new ModelMapper();
     }
 }
