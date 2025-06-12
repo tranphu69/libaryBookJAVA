@@ -1,43 +1,21 @@
-package com.example.libaryBook.entity;
+package com.example.libaryBook.dto.response;
 
-import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 import java.time.LocalDateTime;
-import java.util.Set;
 import java.util.UUID;
 
-@Entity
-@Table(name = "users")
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(name = "id", nullable = false)
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class UserResponse {
     private UUID id;
-    @Column(name = "username", length = 50)
     private String username;
-    @Column(name = "password")
-    private String password;
-    @Column(name = "email")
     private String email;
-    @Column(name = "full_name", length = 100)
     private String fullName;
-    @Column(name = "phone")
     private Number phone;
-    @Column(name = "gender")
     private Integer gender;
-    @Column(name = "address", length = 100)
     private String address;
-    @Column(name = "created_at")
     private LocalDateTime createdAt;
-    @Column(name = "updated_at")
     private LocalDateTime updatedAt;
-    @ManyToMany
-    @JoinTable(
-            name = "user_role",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id")
-    )
-    private Set<Role> roles;
 
     public UUID getId() {
         return id;
@@ -53,14 +31,6 @@ public class User {
 
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getEmail() {
@@ -117,13 +87,5 @@ public class User {
 
     public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
-    }
-
-    public Set<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
     }
 }
