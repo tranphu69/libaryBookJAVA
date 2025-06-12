@@ -1,7 +1,6 @@
 package com.example.libaryBook.configuration;
 
 import com.example.libaryBook.entity.User;
-import com.example.libaryBook.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.ApplicationRunner;
@@ -15,6 +14,8 @@ public class ApplicationInitConfig {
     private String adminUsername;
     @Value("${admin.password}")
     private String adminPassword;
+    @Value("${admin.email}")
+    private String adminEmail;
     @Autowired
     private PasswordEncoder passwordEncoder;
 
@@ -25,6 +26,7 @@ public class ApplicationInitConfig {
                 User user = new User();
                 user.setUsername(adminUsername);
                 user.setPassword(passwordEncoder.encode(adminPassword));
+                user.setEmail(adminEmail);
                 userRepository.save(user);
             }
         };

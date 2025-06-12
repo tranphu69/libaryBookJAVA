@@ -1,9 +1,6 @@
 package com.example.libaryBook.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-
 import java.util.Date;
 
 @Entity
@@ -17,6 +14,8 @@ public class User {
     private String username;
     @Column(name = "password")
     private String password;
+    @Column(name = "email")
+    private String email;
     @Column(name = "full_name", length = 100)
     private String fullName;
     @Column(name = "phone")
@@ -56,6 +55,14 @@ public class User {
 
     public String getFullName() {
         return fullName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public void setFullName(String fullName) {
